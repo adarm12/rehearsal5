@@ -8,6 +8,8 @@ public class Client{
     private boolean isClubMember;
     private int purchasesNumber;
     private int purchasesPrice;
+    private boolean isWorker;
+    private Date lastPurchaseDate;
 
     public Client(String name, String lastName, String userName, String password, boolean isClubMember, int purchasesNumber, int purchasesPrice, boolean isWorker, Date lastPurchaseDate) {
         this.name = name;
@@ -21,11 +23,9 @@ public class Client{
         this.lastPurchaseDate = lastPurchaseDate;
     }
 
-    private boolean isWorker;
-    private Date lastPurchaseDate;
+    public Client(String name, String lastName, String userName, String password, boolean isWorker, boolean isClubMember, int purchasesPrice, int i, boolean b){
 
-
-
+    }
 
     public String getName() {
         return name;

@@ -59,8 +59,8 @@ public class Store {
         boolean isValidUserName;
         String userName;
         boolean isValidPassword;
-        String password;
-        boolean isClubMember;
+        String password = null;
+        boolean isClubMember = false;
         String clubMember;
         int rank;
 
@@ -87,13 +87,19 @@ public class Store {
         } while (!validName(lastName));
 
         do {
+            System.out.println("Enter password (at least 6 chars long): ");
+            password = scanner.nextLine();
+        } while (!(validPassword(password)));
+
+        do {
             System.out.println("Enter user name: ");
             userName = scanner.nextLine();
         } while (!validName(userName));
 
         if (!isWorker) {
             do {
-                System.out.println("Are you club member? ");
+                System.out.println("Are you club member? \n" +
+                        "Enter yes or no.");
                 clubMember = scanner.nextLine();
                 if (clubMember.equals(YES_CLUB_MEMBER)) {
                     isClubMember = true;
@@ -114,6 +120,9 @@ public class Store {
                 rank = scanner.nextInt();
             } while ((rank != REGULAR_WORKER) && (rank != MANAGER) && (rank != MANAGEMENT_TEAM_MEMBER));
         }
+        System.out.println("The user created successfully.");
+
+        addClient(name, lastName, userName, password, isClubMember, 0, 0, false);
     }
 
     public boolean validName(String name) {
@@ -154,4 +163,13 @@ public class Store {
         return isValidPassword;
     }
 
+    public void addClient(String name, String lastName, String userName, String password, boolean isClubMember, int purchasesNumber, int purchasesPrice, boolean isWorker) {
+        Client[] arrayOfClients = new Client[this.clients.length + 1];
+        for (int i = 0; i < this.clients.length; i++) {
+            arrayOfClients[i] = this.clients[i];
+        }
+        Client clientToAdd = new Client(name, lastName, userName, password, isWorker, isClubMember, 0, 0, false);
+        arrayOfClients[this.clients.length] = clientToAdd;
+        this.clients = arrayOfClients;
+    }
 }
