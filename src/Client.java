@@ -98,4 +98,8 @@ public class Client{
     public void setLastPurchaseDate(Date lastPurchaseDate) {
         this.lastPurchaseDate = lastPurchaseDate;
     }
+
+    public String toString(){
+        return "Full name: " + this.getName() + " " + this.getLastName() ;
+    }
 }

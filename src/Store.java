@@ -157,7 +157,7 @@ public class Store {
 
     public boolean validPassword(String password) {
         boolean isValidPassword = true;
-        if (password.length() != PASSWORD_LENGTH) {
+        if (password.length() < PASSWORD_LENGTH) {
             isValidPassword = false;
         }
         return isValidPassword;
